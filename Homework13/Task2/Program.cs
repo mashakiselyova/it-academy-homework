@@ -41,42 +41,42 @@ namespace Homework13
     public class Stack<T>
     {
         private List<T> _stack;
-        private int _topItemPointer;
+        public int TopItemPointer { get; private set; }
         public const int Capacity = 10;
 
         public Stack()
         {
             _stack = new List<T>();
-            _topItemPointer = -1;
+            TopItemPointer = -1;
         }
 
         public void Push(T item)
         {
-            if (_topItemPointer + 1 == Capacity)
+            if (TopItemPointer + 1 == Capacity)
             {
                 throw new StackOverflowException();
             }
             _stack.Add(item);
-            _topItemPointer++;
+            TopItemPointer++;
         }
 
         public T Pop()
         {
-            if (_topItemPointer == -1)
+            if (TopItemPointer == -1)
             {
                 throw new StackIsEmptyException();
             }
-            _topItemPointer--;
-            return _stack[_topItemPointer + 1];
+            TopItemPointer--;
+            return _stack[TopItemPointer + 1];
         }
 
         public T Peek()
         {
-            if (_topItemPointer == -1)
+            if (TopItemPointer == -1)
             {
                 throw new StackIsEmptyException();
             }
-            return _stack[_topItemPointer];
+            return _stack[TopItemPointer];
         }
     }
 }

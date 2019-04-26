@@ -41,41 +41,41 @@ namespace Homework13
     public class Stack
     {
         private object[] _stack;
-        private int _topItemPointer;
+        public int TopItemPointer { get; private set; }
         public const int Capacity = 10;
 
         public Stack()
         {
             _stack = new object[Capacity];
-            _topItemPointer = -1;
+            TopItemPointer = -1;
         }
 
         public void Push(object item)
         {
-            if (_topItemPointer + 1 == Capacity)
+            if (TopItemPointer + 1 == Capacity)
             {
                 throw new StackOverflowException();
             }
-            _stack[++_topItemPointer] = item;
+            _stack[++TopItemPointer] = item;
         }
 
         public object Pop()
         {
-            if (_topItemPointer == -1)
+            if (TopItemPointer == -1)
             {
                 throw new StackIsEmptyException();
             }
-            _topItemPointer--;
-            return _stack[_topItemPointer + 1];
+            TopItemPointer--;
+            return _stack[TopItemPointer + 1];
         }
 
         public object Peek()
         {
-            if (_topItemPointer == -1)
+            if (TopItemPointer == -1)
             {
                 throw new StackIsEmptyException();
             }
-            return _stack[_topItemPointer];
+            return _stack[TopItemPointer];
         }
     }
 
